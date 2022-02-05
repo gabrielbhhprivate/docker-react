@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  reacte-app:
+  web:
     build: 
       context: .
       dockerfile: Dockerfile.dev
@@ -10,3 +10,12 @@ services:
     volumes:
       - /app/node_modules
       - .:/app
+
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run" ,"test"]
